@@ -38,9 +38,9 @@ Table 1: Descriptive statistics of each variable in the dataset
 | max   | 172792   |      2.45493     |     22.0577      |      9.38256     |     16.8753      |     34.8017      |     73.3016      |    120.589       |     20.0072      |     15.595       |     23.7451      |     12.0189      |      7.84839     |      7.12688     |     10.5268      |      8.87774     |     17.3151      |      9.25353     |      5.04107     |      5.59197     |     39.4209     |     27.2028      |     10.5031      |     22.5284      |      4.58455     |      7.51959   |      3.51735    |     31.6122      |     33.8478      |  25691.2    |      1          |
 
 
-Figure 1: ![Class countplot](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/class.png)
+Figure 1: Class countplot ![Class countplot](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/class.png)
 
-Figure 2: Feature variable distributions - insert here!
+Figure 2: Feature variable distributions ![Feature variable distributions](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/distplots.png)
 
 **Key findings**
 
@@ -49,8 +49,11 @@ Figure 2: Feature variable distributions - insert here!
 * 'Time' has a bimodal distribution
 * Most variables are distributed roughly around 0, besides fradulent classes where variable distributions are different between genuine and fraudulent classes: V3, V4, V10, V11, V12, V14, V16, V17, V18. 
 
-Figure 3: Heatmap of correlation between all variables - insert here!
-Figure 4: Scatter plot between Time and Amount - insert here!
+Figure 3: Heatmap of correlations of each variable 
+![corr_heatmap](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/corr_heatmap.png)
+
+Figure 4: Scatter plot between Time and Amount
+![Time_Amount](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/Time_Amount.png)
 
 **Key findings**
 * No notable correlation between the numbered variables - from V1 to V28
@@ -59,8 +62,11 @@ Figure 4: Scatter plot between Time and Amount - insert here!
   * 'Amount': positive correlation with V7 and V20, and negative correlation with V2
 * No correlation between time and amount for both genuine and fraudulent transactions. 
 
-Figures 5-8: Scatter plots and line of best fits by Class - insert here!
-
+Figures 5-8: Scatter plots and line of best fits by Class
+![V2_Amount](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/V2_Amount.png)
+![V7_Amount](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/V7_Amount.png)
+![V20_Amount](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/V20_Amount.png)
+![V3_Time](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/V3_Time.png)
 
 **Key finding**
 Only observable correlations are between 'Amount' and variables V2, V7 and V20 for genuine transactions (Class=0) only. 
@@ -124,7 +130,26 @@ The results above show both models have similar scores. However, the original XG
 
 
 ## Model evaluation 
-Figures 9 and 10: ROC Curve (9) and Precision-Recall Curve (10) for the best model - insert here!
+Table 5: Classification report of best model on test data
+
+|              | Precision    | Recall    | F1 Score    |Support       |
+|-------------:|:-------------|:----------|:------------|:-------------|
+|Genuine       | 1.00         |1.00       |1.00         |56864         |
+|Fraudulent    | 0.87         |0.85       |0.86         |98            |
+|    |          |       |         |            |
+|Accuracy    |          |       |1.00         |56962            |
+|Macro Average    | 0.94         |0.85       |0.86         |56962            |
+|Weighted Average    | 1.00         |1.00       |1.00         |56962            |
+
+
+Figures 9: Confusion matrix of best model on test data
+
+![creditcard_conf_matrix](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/creditcard_conf_matrix.png)
+
+
+Figures 10 and 11: ROC Curve and Precision-Recall Curve for the best model (on test data)
+
+![creditcard_curves](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/creditcard_curves.png)
 
 
 The evaluation of the model on the test data above showed similar results to the k-fold cross validation. This gives confidence in deploying our selected model. 
