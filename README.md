@@ -50,10 +50,14 @@ Figure 2: Feature variable distributions ![Feature variable distributions](https
 * Most variables are distributed roughly around 0, besides fradulent classes where variable distributions are different between genuine and fraudulent classes: V3, V4, V10, V11, V12, V14, V16, V17, V18. 
 
 Figure 3: Heatmap of correlations of each variable 
+
 ![corr_heatmap](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/corr_heatmap.png)
 
+
 Figure 4: Scatter plot between Time and Amount
+
 ![Time_Amount](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/Time_Amount.png)
+
 
 **Key findings**
 * No notable correlation between the numbered variables - from V1 to V28
@@ -63,10 +67,18 @@ Figure 4: Scatter plot between Time and Amount
 * No correlation between time and amount for both genuine and fraudulent transactions. 
 
 Figures 5-8: Scatter plots and line of best fits by Class
+
 ![V2_Amount](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/V2_Amount.png)
+
+
 ![V7_Amount](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/V7_Amount.png)
+
+
 ![V20_Amount](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/V20_Amount.png)
+
+
 ![V3_Time](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/V3_Time.png)
+
 
 **Key finding**
 Only observable correlations are between 'Amount' and variables V2, V7 and V20 for genuine transactions (Class=0) only. 
@@ -138,7 +150,7 @@ Table 5: Classification report of best model on test data
 |Fraudulent    | 0.87         |0.85       |0.86         |98            |
 |    |          |       |         |            |
 |Accuracy    |          |       |1.00         |56962            |
-|Macro Average    | 0.94         |0.85       |0.86         |56962            |
+|Macro Average    | 0.94         |0.92       |0.93         |56962            |
 |Weighted Average    | 1.00         |1.00       |1.00         |56962            |
 
 
