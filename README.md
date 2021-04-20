@@ -38,9 +38,15 @@ Table 1: Descriptive statistics of each variable in the dataset
 | max   | 172792   |      2.45493     |     22.0577      |      9.38256     |     16.8753      |     34.8017      |     73.3016      |    120.589       |     20.0072      |     15.595       |     23.7451      |     12.0189      |      7.84839     |      7.12688     |     10.5268      |      8.87774     |     17.3151      |      9.25353     |      5.04107     |      5.59197     |     39.4209     |     27.2028      |     10.5031      |     22.5284      |      4.58455     |      7.51959   |      3.51735    |     31.6122      |     33.8478      |  25691.2    |      1          |
 
 
-Figure 1: Class countplot ![Class countplot](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/class.png)
+Figure 1: Class countplot 
 
-Figure 2: Feature variable distributions ![Feature variable distributions](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/distplots.png)
+![Class countplot](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/class.png)
+
+
+Figure 2: Feature variable distributions 
+
+![Feature variable distributions](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/distplots.png)
+
 
 **Key findings**
 
@@ -51,7 +57,7 @@ Figure 2: Feature variable distributions ![Feature variable distributions](https
 
 Figure 3: Heatmap of correlations of each variable 
 
-![corr_heatmap](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/corr_heatmap.png)
+![corr_heatmap](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/corrheatmap.png)
 
 
 Figure 4: Scatter plot between Time and Amount
