@@ -40,12 +40,16 @@ Table 1: Descriptive statistics of each variable in the dataset
 
 Figure 1: Class countplot 
 
+
 ![Class countplot](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/class.png)
+
 
 
 Figure 2: Feature variable distributions 
 
+
 ![Feature variable distributions](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/distplots.png)
+
 
 
 **Key findings**
@@ -74,16 +78,33 @@ Figure 4: Scatter plot between Time and Amount
 
 Figures 5-8: Scatter plots and line of best fits by Class
 
+
+
+
 ![V2_Amount](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/V2_Amount.png)
+
+
+
 
 
 ![V7_Amount](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/V7_Amount.png)
 
 
+
+
+
 ![V20_Amount](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/V20_Amount.png)
 
 
+
+
+
+
 ![V3_Time](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/V3_Time.png)
+
+
+
+
 
 
 **Key finding**
