@@ -190,6 +190,11 @@ Figures 10 and 11: ROC Curve and Precision-Recall Curve for the best model (on t
 
 ![creditcard_curves](https://github.com/Bennett-Heung/Credit-Card-Fraud-Detection/blob/main/images/creditcard_curves.png)
 
+Table 6: AUROC and AUPRC of the best model on test data
+
+|                          | AUROC     | AUPRC    |
+|-------------------------:|:----------|:---------|
+|Original XGBoost Classifer| 0.977668  |0.87572   |
 
 The evaluation of the model on the test data above showed similar results to the k-fold cross validation. This gives confidence in deploying our selected model. 
 
