@@ -12,10 +12,10 @@ Not all credit card transactions are genuine, as some are actually fraudulent. F
 
 ## Data
 The dataset is imbalanced, with the positive class (frauds) account comprising only 0.172% of all transactions (492 frauds within 284,807 transactions). The variables in the dataset are: 
-* Feature 'Class' - the target variable and it takes value 1 in case of fraud and 0 otherwise
-* The feature variables, 'V1, V2, … V28', are the principal components obtained with PCA - transformed due to confidentiality issues 
-* 'Time' contains the seconds elapsed between each transaction and the first transaction in the dataset
-* 'Amount' - the transaction amount. 
+* The feature variable, **'Class'**, is the target variable and it takes value 1 in case of fraud and 0 otherwise
+* The feature variables, **'V1, V2, … V28'**, are the principal components obtained with PCA - transformed due to confidentiality issues 
+* **'Time'** is the amount of time (seconds) elapsed between each transaction and the first transaction within the dataset
+* **'Amount'** - the transaction amount. 
 
 ## Data Preparation
 * The features variables were floats and the target variable 'Class' were integers 
