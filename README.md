@@ -117,18 +117,24 @@ Only observable correlations are between 'Amount' and variables V2, V7 and V20 f
   * These models were baseline models; hyperparameter tuning of these models was the next step, coupled with various resampling techniques (and without resampling). 
   * Resampling techniques included Random Undersampling, Tomek Links, Random Oversampling, SMOTE and SMOTE-Tomek. 
   * Both resampling and hyperparameter tuning was involved to select the best model(s) based on the performance metrics, which are mentioned below.
-* Accuracy was not an appropriate measure for imbalanced data; precision, recall, F1-score, AUROC (area under the ROC curve) and AUPRC (area under the precision-recall curve) are metrics considered to evaluate model performance. Note that optimal thresholds were not assessed during cross-validation as the area-under-curve metrics were chosen the determine the best models overall, rather at a specific threshold. 
 * Stratified K-fold Cross Validation was applied, rather than nested cross-validation, to restrain the time length to run the codes below. Stratified K-folds were used rather than K-folds given that there were not many fraudulent transactions in the dataset.  
+* Accuracy was not an appropriate measure for imbalanced data; precision, recall, F1-score, AUROC (area under the ROC curve) and AUPRC (area under the precision-recall curve) are metrics considered to evaluate model performance. Note that optimal thresholds were not assessed during cross-validation as the area-under-curve metrics were chosen the determine the best models overall, rather at a specific threshold. 
+* The area under the precision-recall curve (AUPRC) was the selected evaluation metric based on the following reasons: 
+  * Accuracy and the area under the ROC curve do not add much weight in terms of evaluating to find the best model as they are both high typically with imbalanced data. 
+  * Recall is a greater concern than precision as the cost of incorrectly not detecting fraud transactions (predicted Class=0, true Class=1) is greater than incorrectly detecting genuine transactions (predicted Class=1, true Class=0). However, a low precision score comes as a tradeoff for a significantly high recall, which makes F1-score an attractive evaluation metric.
+  * Despite F1-scores being a sensible evaluation metric as it can strike a balance between the precision and recall scores, the AUPRC was the preferred metric. The Precision-Recall curve indicates a F1-score for each threshold, which reflects an overall assessment of the model rather than the F1-score. 
 
-Table 2: Results of cross validating the original models (i.e. without resampling or hyperparameter tuning)
+Table 2 shows the cross validation AUPRC's of the original models, involving no resampling nor hyperparameter tuning. 
 
-|    | model_name                    | Precision       | Recall          | F1 Score        | AUROC           | AUPRC           |
-|---:|:------------------------------|:----------------|:----------------|:----------------|:----------------|:----------------|
-|  0 | Logistic Regression           |0.061654         |**0.916131**     |0.115500         |0.980907         |0.753420         |
-|  1 | Random Forest Classifier      |**0.951280**     |0.748588         |0.836472         |0.948944         |0.835786         |
-|  2 | XGBoost Classifier            |0.913743         |0.822201         |**0.865079**     |**0.982511**     |**0.851396**     |
+Table 2: AUPRC of the original models 
 
-*Note: the scores are averages of scores on the validation sets.*
+|    | model_name                    | AUPRC           |
+|---:|:------------------------------|:----------------|
+|  0 | Logistic Regression           |0.753420         |
+|  1 | Random Forest Classifier      |0.835786         |
+|  2 | XGBoost Classifier            |**0.851396**     |
+
+*Note: these are average AUPRCs of the validation sets.*
 
 **Key Findings**
 * Logisitc Regression had the highest Recall score, but returned a very low Precision score, F1 score and AUPRC.
@@ -136,37 +142,18 @@ Table 2: Results of cross validating the original models (i.e. without resamplin
 * XGBoost Classifier has the highest Recall score, F1 score, AUROC and AUPRC.
 * XGBoost Classifier is the preferred (baseline) model - consistent with top scores; a steady recall without the cost of significantly less precision and vice versa.    
 
-Table 3: Results of the top models after resampling and hyperparameter tuning
+After resampling and hyperparameter tuning, the model with the highest AUPRC is the tuned XGBoost Classifier, as shown in  Table 3. This model is the model selected for evaluation with the test set. 
 
-|    | model_name                                      | Precision       | Recall          | F1 Score        | AUROC           | AUPRC           |
-|---:|:------------------------------------------------|:----------------|:----------------|:----------------|:----------------|:----------------|
-|  0 | Tuned XGBoost Classifier (without resampling)   |**0.958042**     |0.789192         |0.864752         |0.982509         |**0.852028**     |
-|  1 | XGBoost Classifier with Random Oversampling     |0.923269         |0.819669         |**0.868017**     |**0.982739**     |0.849754         |
-|  2 | XGBoost Classifier with SMOTE-Tomek             |0.788984         |**0.827264**     |0.807288         |0.977423         |0.844292         |
+Table 3: Model with the highest AUPRC 
 
-*Note: the scores are averages of scores on the validation sets and the combination of hyperparameters for each XGBoost Classifier are different.*
+|    | model_name                                      | AUPRC           |
+|---:|:------------------------------------------------|:----------------|
+|  0 | Tuned XGBoost Classifier (without resampling)   |**0.852028**     |
+
+*Note: these are average AUPRCs of the validation sets.*
 
 **Key Findings**
 * Tuned XGBoost Classifier (without resampling) - higher precision and AUPRC but at the cost of a signifcantly lower recall score.
-*  XGBoost Classifier with Random Oversampling - slightly higher F1 score and AUROC, but slightly lower recall score than the original XGB Classifier.
-*  XGBoost Classifier with SMOTE-Tomek - a slightly better recall score at a great cost of lower precision. 
-
-The top two models based on the results above are in the table below. 
-
-Table 4: Best models 
-|    | model_name                                    | Precision       | Recall          | F1 Score        | AUROC           | AUPRC           |
-|---:|:----------------------------------------------|:----------------|:----------------|:----------------|:----------------|:----------------|
-|  0 | Original XGBoost Classifier                   |0.913743         |**0.822201**     |0.865079         |0.982511         |**0.851396**     |
-|  1 | XGBoost Classifier with Random Oversampling   |**0.923269**     |0.819669         |**0.868017**     |**0.982739**     |0.849754         |
-
-*Note: the scores are averages of scores on the validation sets and the combination of hyperparameters for each XGBoost Classifier are different.*
-
-The results above show both models have similar scores. However, the original XGBoost Classifier (without resampling or tuning) is the best model between the two. 
-* Recall has a greater focus than precision, as the cost of incorrectly not detecting fraud transactions (predicted Class=0, true Class=1) is greater than incorrectly detecting genuine transactions (predicted Class=1, true Class=0). 
-* AUROC is typically high for imbalanced data and this happens to be the case throughout the modelling process. Thus, it does not hold much weight as an AUC (area-under-curve) measure in comparison to AUPRC. 
-* The F1 score, as a harmonic mean between precision and recall. The original XGBoost had a slightly lower F1 score than the random oversampling XGBoost Classifier. This is due to the result of the greater difference between precision scores relative to the difference between recall scores. 
-* From these findings, the original XGBoost Classifier is the best model, as well the more attractive one in terms of the less time it takes for it to run. 
-
 
 ## Model evaluation 
 Table 5: Classification report of best model on test data
