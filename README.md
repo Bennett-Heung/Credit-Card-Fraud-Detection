@@ -56,7 +56,7 @@ Figure 2: Feature variable distributions
 
 * The number of fraudulent transactions relative to genuine transactions indicates that this dataset is severely imbalanced 
 * 'Amount' distribution is skewed right 
-* The time (seconds) elapsed from the first transaction (in the dataset) to the transaction itself (**'Time'** variable) has a bimodal distribution
+* There is a bimodal distribution in the time (seconds) elapsed from the first transaction (in the dataset) to the transaction itself (**'Time'** variable). 
 * Most variables are distributed roughly around 0, besides fradulent classes where variable distributions are different between genuine and fraudulent classes: V3, V4, V10, V11, V12, V14, V16, V17, V18. 
 
 Figure 3: Heatmap of correlations of each variable 
