@@ -148,8 +148,6 @@ Table 3: Model with the highest AUPRC
 
 *Note: these are average AUPRCs of the validation sets.*
 
-**Key Findings**
-* Tuned XGBoost Classifier (without resampling) - higher precision and AUPRC but at the cost of a signifcantly lower recall score.
 
 ## Model evaluation 
 Table 5: Classification report of best model on test data
