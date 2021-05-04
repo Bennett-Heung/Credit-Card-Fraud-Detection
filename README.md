@@ -56,7 +56,7 @@ Figure 2: Feature variable distributions
 
 * The number of fraudulent transactions relative to genuine transactions indicates that this dataset is severely imbalanced 
 * 'Amount' distribution is skewed right 
-* 'Time' has a bimodal distribution
+* The time (seconds) elapsed from the first transaction (in the dataset) to the transaction itself (**'Time'** variable) has a bimodal distribution
 * Most variables are distributed roughly around 0, besides fradulent classes where variable distributions are different between genuine and fraudulent classes: V3, V4, V10, V11, V12, V14, V16, V17, V18. 
 
 Figure 3: Heatmap of correlations of each variable 
@@ -108,7 +108,7 @@ Figures 5-8: Scatter plots and line of best fits by Class
 
 
 **Key finding**
-Only observable correlations are between 'Amount' and variables V2, V7 and V20 for genuine transactions (Class=0) only. 
+* Only observable correlations are between 'Amount' and variables V2, V7 and V20 for genuine transactions (Class=0) only. 
 
 ## Modelling
 * Feature Engineering: 'Time' and 'Amount' variables were standardised (like z-scores) before modelling. 
@@ -137,10 +137,7 @@ Table 2: AUPRC of the original models
 *Note: these are average AUPRCs of the validation sets.*
 
 **Key Findings**
-* Logisitc Regression had the highest Recall score, but returned a very low Precision score, F1 score and AUPRC.
-* Random Forest Classifier had the highest Precision score.
-* XGBoost Classifier has the highest Recall score, F1 score, AUROC and AUPRC.
-* XGBoost Classifier is the preferred (baseline) model - consistent with top scores; a steady recall without the cost of significantly less precision and vice versa.    
+* XGBoost Classifier is the preferred (baseline) model, prior to resampling and hyperparameter tuning.    
 
 After resampling and hyperparameter tuning, the model with the highest AUPRC is the tuned XGBoost Classifier, as shown in  Table 3. This model is the model selected for evaluation with the test set. 
 
