@@ -155,10 +155,10 @@ Table 5: Classification report of best model on test data
 |              | Precision    | Recall    | F1 Score    |Support       |
 |-------------:|:-------------|:----------|:------------|:-------------|
 |Genuine       | 1.00         |1.00       |1.00         |56864         |
-|Fraudulent    | 0.87         |0.85       |0.86         |98            |
+|Fraudulent    | 0.93         |0.83       |0.87         |98            |
 |    |          |       |         |            |
 |Accuracy    |          |       |1.00         |56962            |
-|Macro Average    | 0.94         |0.92       |0.93         |56962            |
+|Macro Average    | 0.97         |0.91       |0.94         |56962            |
 |Weighted Average    | 1.00         |1.00       |1.00         |56962            |
 
 
@@ -175,7 +175,7 @@ Table 6: AUROC and AUPRC of the best model on test data
 
 |                          | AUROC     | AUPRC    |
 |-------------------------:|:----------|:---------|
-|Original XGBoost Classifer| 0.977668  |0.87572   |
+|Original XGBoost Classifer| 0.977952  | 0.878566 |
 
 The evaluation of the model on the test data above showed similar results to the k-fold cross validation. This gives confidence in deploying our selected model. 
 
@@ -185,4 +185,5 @@ The evaluation of the model on the test data above showed similar results to the
   * n_estimators = 1000
   * max_depth = 6 
   * learning_rate = 0.1
+  * use_label_encoder = False
   * Rest of the hyperparameters are default. 
