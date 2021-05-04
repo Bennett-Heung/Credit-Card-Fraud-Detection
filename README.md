@@ -20,7 +20,7 @@ The dataset is imbalanced, with the positive class (frauds) account comprising o
 ## Data Preparation
 * The features variables were floats and the target variable 'Class' were integers 
 * No null observations were detected 
-* Only 'Time' and 'Amount' variables were standardised before modelling. 
+* 'Time' and 'Amount' variables were standardised before modelling. 
 
 ## Exploratory Data Analysis (EDA)
 
