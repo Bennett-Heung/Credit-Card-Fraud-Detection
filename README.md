@@ -117,12 +117,11 @@ Figures 5-8: Scatter plots and line of best fits by Class
   * These models were baseline models; hyperparameter tuning of these models was the next step, coupled with various resampling techniques (and without resampling). 
   * Resampling techniques included Random Undersampling, Tomek Links, Random Oversampling, SMOTE and SMOTE-Tomek. 
   * Both resampling and hyperparameter tuning was involved to select the best model(s) based on the performance metrics, which are mentioned below.
-* Stratified K-fold Cross Validation was applied, rather than nested cross-validation, to restrain the time length to run the codes below. Stratified K-folds were used rather than K-folds given that there were not many fraudulent transactions in the dataset.  
-* Accuracy was not an appropriate measure for imbalanced data; precision, recall, F1-score, AUROC (area under the ROC curve) and AUPRC (area under the precision-recall curve) are metrics considered to evaluate model performance. Note that optimal thresholds were not assessed during cross-validation as the area-under-curve metrics were chosen the determine the best models overall, rather at a specific threshold. 
-* The area under the precision-recall curve (AUPRC) was the selected evaluation metric based on the following reasons: 
-  * Accuracy and the area under the ROC curve do not add much weight in terms of evaluating to find the best model as they are both high typically with imbalanced data. 
-  * Recall is a greater concern than precision as the cost of incorrectly not detecting fraud transactions (predicted Class=0, true Class=1) is greater than incorrectly detecting genuine transactions (predicted Class=1, true Class=0). However, a low precision score comes as a tradeoff for a significantly high recall, which makes F1-score an attractive evaluation metric.
-  * Despite F1-scores being a sensible evaluation metric as it can strike a balance between the precision and recall scores, the AUPRC was the preferred metric. The Precision-Recall curve indicates a F1-score for each threshold, which reflects an overall assessment of the model rather than the F1-score. 
+* **Stratified K-fold Cross Validation** was applied, rather than nested cross-validation, to restrain the time length to run the codes below. Stratified K-folds were used rather than K-folds given that there were not many fraudulent transactions in the dataset.  
+* The **area under the precision-recall curve (AUPRC)** was the selected evaluation metric based on the following reasons: 
+  * *Accuracy* and the *area under the ROC curve (AUROC)* do not add much weight in terms of evaluating to find the best model as they are both high typically with imbalanced data. 
+  * *Recall* is a greater concern than *precision* as the cost of incorrectly not detecting fraud transactions (predicted Class=0, true Class=1) is greater than incorrectly detecting genuine transactions (predicted Class=1, true Class=0). However, a low precision score comes as a tradeoff for a significantly high recall, which makes *F1-score* an attractive evaluation metric.
+  * Despite F1-scores being a sensible evaluation metric striking a balance between the precision and recall, the *AUPRC* was the preferred metric. The Precision-Recall curve indicates a F1-score for each threshold. Thus, the *AUPRC* reflects a more overall assessment of the model than the F1-score. 
 
 Table 2 shows the cross validation AUPRC's of the original models, involving no resampling nor hyperparameter tuning. 
 
@@ -137,7 +136,7 @@ Table 2: AUPRC of the original models
 *Note: these are average AUPRCs of the validation sets.*
 
 **Key Findings**
-* XGBoost Classifier is the preferred (baseline) model, prior to resampling and hyperparameter tuning.    
+* The XGBoost Classifier is the preferred (baseline) model, prior to resampling and hyperparameter tuning.    
 
 After resampling and hyperparameter tuning, the model with the highest AUPRC is the tuned XGBoost Classifier, as shown in  Table 3. This model is the model selected for evaluation with the test set. 
 
@@ -182,7 +181,10 @@ Table 6: AUROC and AUPRC of the best model on test data
 
 The evaluation of the model on the test data above showed similar results to the k-fold cross validation. This gives confidence in deploying our selected model. 
 
-* The code for the best model is: XGBClassifier(random_state=random_seed, scale_pos_weight = weights, use_label_encoder=False), where: 
+* The code for the best model is the XGBClassifier without resampling, where: 
   * random_seed = 42
-  * weights = the total number of Class=0 / the total number of Class=1
+  * scale_pos_weight = 1
+  * n_estimators = 1000
+  * max_depth = 6 
+  * learning_rate = 0.1
   * Rest of the hyperparameters are default. 
